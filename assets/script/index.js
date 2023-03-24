@@ -66,7 +66,7 @@ gameOverSound.type = 'audio/wav';
 
 let randomWord = "";
 let points = 0 ;
-let time = 15;
+let time = 99;
 
 // Generate random word from 'words' array
 function getRandomWord() {

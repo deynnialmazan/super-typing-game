@@ -8,10 +8,12 @@
   --app-light-gray: #f9f9f9;
   --app-blue-btn: #6366f1;
   --app-red-msg: #ff0000;
+  --app-aqua-medium: #00ffffaa;
 }
 
+
 body {
-  background-color: var(--app-light-gray);
+  background: var(--app-light-gray) url("../image/background-image.jpg") center center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +50,7 @@ img {
   padding: 8px;
   border-radius: 4px;
   margin: 0 0 10px;
-  color: rgba(0, 255, 255, 0.667);
+  color: var(--app-aqua-medium);
 }
 
 p.instruction {
@@ -79,11 +81,11 @@ input[type=button] {
   border-radius: 30px;
   font-size: 18px;
   font-weight: 700;
-  color: #fff;
+  color: var(--app-light-gray);
   letter-spacing: 1.3px;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
   margin-top: 10px;
+  transition: all 0.25s ease-in-out;
 }
 
 input[type=button]:hover, .play-again-btn:hover{
@@ -104,8 +106,11 @@ input[type=text] {
   padding: 12px 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-
+  border: 2px solid var(--app-orange-text);
+  transition: all 0.25s ease-in-out;
 }
+
+
 
 .time-box {
   font-size: 16px;
@@ -113,7 +118,7 @@ input[type=text] {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  background-color: rgba(0, 255, 255, 0.667);
+  background-color: var(--app-aqua-medium);
   height: 60px;
   width: 100px;
   padding: 10px;
@@ -129,7 +134,7 @@ input[type=text] {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background-color: rgba(0, 255, 255, 0.667);
+  background-color: var(--app-aqua-medium);
   height: 60px;
   width: 100px;
   padding: 10px;
@@ -193,27 +198,26 @@ input[type=text] {
   animation: animation1 5s ease-in-out infinite;
 }
 
-@keyframes animation1 {
-  0% {color: #00ffffaa;} 
- 25% {color: #f80;} 
- 50% {color: #ff0;} 
- 75% {color: #00ffffaa;} /*Otra vez naranja*/
-100% {color: #f80;} /*Otra vez amarillo*/
+.glow {
+  animation: glow 3s ease-in-out infinite; 
+  color: #12f0f0f9;
 }
-
 
 .bounce {
   animation: bounce 2.5s ease-in-out infinite;
 }
 
+@keyframes animation1 {
+  0% {color: #00ffffaa;} 
+ 25% {color: #f80;} 
+ 50% {color: #ff0;} 
+ 75% {color: #00ffffaa;} 
+100% {color: #f80;} 
+}
+
 @keyframes bounce {
     0%, 50%, 100% { translate: 0 0; }
     25%, 75% { translate: 0 -15px; }
-}
-
-.glow {
-  animation: glow 3s ease-in-out infinite; 
-  color: #12f0f0f9;
 }
 
 @keyframes glow {
