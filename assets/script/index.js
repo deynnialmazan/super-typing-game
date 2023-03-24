@@ -24,8 +24,8 @@ const today = now.toDateString().slice(4);
 const startBtn = document.querySelector('.startBtn');
 const word = document.querySelector('.word');
 const inputText = document.querySelector('.input-text');
-const timeLeft = document.querySelector('.time-box');
-const totalPoints = document.querySelector('.points-box');
+const timeLeft = document.querySelector('#time');
+const totalPoints = document.querySelector('#points');
 const endGameBox = document.querySelector('.end-game');
 const message = document.querySelector('#message');
 const playAgainBtn = document.querySelector('.play-again-btn');
@@ -33,7 +33,29 @@ const pointsMessage = document.querySelector('.points-message');
 const instruction = document.querySelector('.instruction');
 const percentageMessage = document.querySelector('.percentage-message');
 
-// Words for game
+//Sounds
+//Background sound
+const startSound = new Audio('./assets/audio/taratata-6264.mp3')
+startSound.type = 'audio/mp3';
+
+// New point sound
+const hitSound = new Audio('./assets/audio/hit-sound3.mp3') 
+hitSound.type = 'audio/mp3';
+
+// Game over sound
+const gameOverSound = new Audio('./assets/audio/game-over.wav') 
+gameOverSound.type = 'audio/wav';
+
+// Tic-tac sound (last 5 seconds)
+const ticTacSound = new Audio('./assets/audio/tic-tac.mp3') 
+ticTacSound.type = 'audio/mp3';
+
+//Setting variables
+let randomWord = "";
+let points = 0 ;
+let time = 99;
+
+// Setting array
 const words = [
   'dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'population','weather', 'bottle', 'history', 'dream', 'character', 
@@ -52,38 +74,17 @@ const words = [
   'planet', 'software', 'update', 'yellow', 'keyboard', 'window'
 ];
 
-//Background sound
-const startSound = new Audio('./assets/audio/taratata-6264.mp3')
-startSound.type = 'audio/mp3';
-
-// New point sound
-const hitSound = new Audio('./assets/audio/hit-sound3.mp3') 
-hitSound.type = 'audio/mp3';
-
-// Game over sound
-const gameOverSound = new Audio('./assets/audio/game-over.wav') 
-gameOverSound.type = 'audio/wav';
-
-// Tic-tac sound (last 5 seconds sound)
-const ticTacSound = new Audio('./assets/audio/tic-tac.mp3') 
-ticTacSound.type = 'audio/mp3';
-
-//Setting variables
-let randomWord = "";
-let points = 0 ;
-let time = 99;
-
 // Generate random word from 'words' array
 function getRandomWord() {
-let wordSelected = words[Math.floor(Math.random() * words.length)];
-//console.log(wordSelected);
+  let wordSelected = words[Math.floor(Math.random() * words.length)];
+  //console.log(wordSelected);
 
-//Delete word of the array
-const indexToRemove = words.indexOf(wordSelected);
-  if (indexToRemove !== -1) {
-  words.splice(indexToRemove, 1);
-}
-return wordSelected;
+  //Delete word selected of the array
+  const indexToRemove = words.indexOf(wordSelected);
+    if (indexToRemove !== -1) {
+    words.splice(indexToRemove, 1);
+  }
+  return wordSelected;
 }
 
 //Display random word in the screen
@@ -92,12 +93,11 @@ function displayRandomWord() {
   word.innerHTML = randomWord;
 }
 
-
 //Update points
 function updatePoints() {
   hitSound.play();
   points++;
-  totalPoints.innerHTML = `Points: <br>${points}</b>`;
+  totalPoints.innerHTML = `${points}`;
   if (points === 90) {
     endGame();
   }
@@ -105,7 +105,7 @@ function updatePoints() {
 
 //Update time
 function updateTime() {
-  timeLeft.innerHTML = `Time left: <br>${time}s</b>`;
+  timeLeft.innerHTML = `${time}s`;
   if(time > 0){
     // decrement
     time--;

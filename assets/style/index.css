@@ -119,7 +119,7 @@ input[type=text] {
   bottom: 20px;
   left: 20px;
   background-color: var(--app-aqua-medium);
-  height: 60px;
+  height: 80px;
   width: 100px;
   padding: 10px;
   border-radius: 50%;
@@ -135,13 +135,18 @@ input[type=text] {
   bottom: 20px;
   right: 20px;
   background-color: var(--app-aqua-medium);
-  height: 60px;
+  height: 80px;
   width: 100px;
   padding: 10px;
   border-radius: 50%;
   color: var(--app-light-gray);
   border-style: solid;
   border-color: rgba(1, 141, 141, 0.667);
+}
+
+#time, #points {
+  font-size: 24px;
+
 }
 
 .message {
@@ -189,6 +194,7 @@ input[type=text] {
   transition: all 0.25s ease-in-out;
   display: none;
 }
+
 
 /* ------------------------------- */
 /* Animations                      */
