@@ -64,22 +64,26 @@ hitSound.type = 'audio/mp3';
 const gameOverSound = new Audio('./assets/audio/game-over.wav') 
 gameOverSound.type = 'audio/wav';
 
+// Tic-tac sound (last 5 seconds sound)
+const ticTacSound = new Audio('./assets/audio/tic-tac.mp3') 
+ticTacSound.type = 'audio/mp3';
+
+//Setting variables
 let randomWord = "";
 let points = 0 ;
 let time = 99;
 
 // Generate random word from 'words' array
 function getRandomWord() {
-  let wordSelected = words[Math.floor(Math.random() * words.length)];
-  //console.log(wordSelected);
+let wordSelected = words[Math.floor(Math.random() * words.length)];
+//console.log(wordSelected);
 
-  //Delete word of the array
-  const indexToRemove = words.indexOf(wordSelected);
+//Delete word of the array
+const indexToRemove = words.indexOf(wordSelected);
   if (indexToRemove !== -1) {
   words.splice(indexToRemove, 1);
-  }
-
-  return wordSelected;
+}
+return wordSelected;
 }
 
 //Display random word in the screen
@@ -105,16 +109,25 @@ function updateTime() {
   if(time > 0){
     // decrement
     time--;
-  } else if (time === 0){
-    endGame();
-  }
+  } else if (time === 0) {
+    endGame(); 
+  //console.log(time);
+  }lastSound();
 }
 
+//Tic-toc sound (last 5 seconds)
+function lastSound() {
+  if(time < 6 && time > 0 ) {
+    ticTacSound.play();
+    startSound.pause();
+    startSound.currentTime = 0;
+    startSound.loop = false;
+  }
+}
 
 // End game
 function endGame() {
   const finalPercentage = ((points/90) * 100).toFixed(0);
-  //console.log(finalPercentage);
 
   // Create object with results using 'Score' class  
   const score = new Score (today, points, finalPercentage);
@@ -125,13 +138,19 @@ function endGame() {
   percentageMessage.innerHTML =`${score.percentage}%`
   endGameBox.style.display = 'flex';
   playAgainBtn.style.display = 'block';
-  startSound.pause();
-  startSound.currentTime = 0;
-  startSound.loop = false;
+
+  //Reproduce only game over sound 
+  ticTacSound.pause();
+  ticTacSound.currentTime = 0;
+  ticTacSound.loop = false;
   gameOverSound.play();
+  setTimeout(() => {
+    gameOverSound.pause();
+  }, 30000);
 };
 
-//Start playing
+
+//Even listeners
 startBtn.addEventListener('click', () => {
   startSound.play();
   startSound.loop = true;
@@ -140,10 +159,14 @@ startBtn.addEventListener('click', () => {
   startBtn.style.visibility = 'hidden';
   instruction.style.visibility = 'visible';
   const timeInterval = setInterval(updateTime, 1000);
-})
+
+  setTimeout(() => {
+    setInterval();
+  }, 99000);
+});
 
 
-// Compare text input with random word
+// Compare word input with random word
 inputText.addEventListener('input', e => {
   const insertedText = e.target.value;
 
