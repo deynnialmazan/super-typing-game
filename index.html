@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-with, initial-scale=1">
+        <meta name="description" content="Super Typing Game">
+        <meta name="keywords" content="html, css, javascript">
+        <title>Super Typing Game</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600&display=swap" rel="stylesheet">
+        <link rel="shorcut icon" href="./assets/image/favicon-32x32 copy.png" type="image/S-icon">
+        <link rel="stylesheet" href="./assets/style/index.css" media="all">
+    </head>
+    <body>
+        <main>
+            <img src="./assets/image/busy2.gif">
+            <div class="container">
+                <h1 class="title animation1"> Super Typing Game </h2>
+
+                <p class="guide">Show off your typing skills... Let's go!</p>
+
+                <input type="button" class="startBtn" value="Start">
+
+                <div class="display-word">
+                    <p class="instruction">Type the word:</p>
+                    <h1 class="word"></h1>
+                </div>
+
+                <input type="text" class="input-text" autocomplete="off" placeholder="Start typing here..."/>
+
+                <div class="results-container">
+                    <h4 id="message"></h4>
+                    <p class="time-box">Time left: <br><span id="time">99s</span></p>
+                    <p class="points-box">Points: <br><span id="points">0</span></p>
+                </div>
+                <!-- <input type="button" onclick="location.reload()" class="restartBtn" value="Restart"> --->
+                <div id="end-game" class="end-game">
+                    <h1 class="glow">Game over</h1>
+                    <p> Total points: </p> <p class="points-message"></p>
+                    <p> Percentage: </p><p class="percentage-message"></p>
+                    
+                    <button onclick="location.reload()" class="play-again-btn">Play again</button>
+                </div>
+            </div>
+            
+        </main>
+        <script src="./assets/script/index.js"></script>
+    </body>
+</html>

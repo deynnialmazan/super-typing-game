@@ -1,0 +1,226 @@
+@import url(./reset.css);
+
+:root {
+  --app-yellow-hover: #ffff1c;
+  --app-dark-bg: #1a1d28;
+  --app-medium-gray: #343541;
+  --app-orange-text: #ff8e1c;
+  --app-light-gray: #f9f9f9;
+  --app-blue-btn: #6366f1;
+  --app-red-msg: #ff0000;
+}
+
+body {
+  background-color: var(--app-light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+img {
+  position: fixed;
+  height: 120px;
+  top: 50px;
+  right: 450px;
+}
+
+/* ------------------------------- */
+/* Main                            */
+/* ------------------------------- */
+
+.container {
+  background-color: var(--app-medium-gray);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  position: relative;
+  text-align: center;
+  width: 680px;
+  height: 450px;
+}
+
+.title {
+  font-size: 48;
+  font-weight: 800;
+  padding: 8px;
+  border-radius: 4px;
+  margin: 0 0 10px;
+  color: rgba(0, 255, 255, 0.667);
+}
+
+p.instruction {
+  font-size: 18px;
+  visibility: hidden;
+  
+}
+
+.display-word {
+  height: 100px;
+  margin-top: 10px;
+}
+
+h1.word {
+  font-size: 36px;
+  color: var(--app-orange-text)
+}
+
+.guide {
+  font-size: 18px;
+}
+
+input[type=button] {
+  width: 140px;
+  height: 45px;
+  text-align: center;
+  background-color: var(--app-orange-text);
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1.3px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  margin-top: 10px;
+}
+
+input[type=button]:hover, .play-again-btn:hover{
+  background-color: var(--app-red-msg);
+}
+
+.restartBtn {
+  position: absolute;
+  bottom: 30px;
+  left: 270px;
+}
+
+input[type=text] {
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 800;
+  width: 250px;
+  padding: 12px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+.time-box {
+  font-size: 16px;
+  font-weight: 800;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(0, 255, 255, 0.667);
+  height: 60px;
+  width: 100px;
+  padding: 10px;
+  border-radius: 50%;
+  color: var(--app-light-gray);
+  border-style: solid;
+  border-color: rgba(1, 141, 141, 0.667);
+}
+
+.points-box {
+  font-size: 16px;
+  font-weight: 800;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 255, 255, 0.667);
+  height: 60px;
+  width: 100px;
+  padding: 10px;
+  border-radius: 50%;
+  color: var(--app-light-gray);
+  border-style: solid;
+  border-color: rgba(1, 141, 141, 0.667);
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.end-game {
+  font-size: 30px;
+  background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: none;
+  padding-top: 70px;
+  border-radius: 15px;
+  color: var(--app-light-gray); 
+}
+
+.points-message, .percentage-message {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--app-orange-text);
+}
+
+.play-again-btn {
+  place-content: center;
+  width: 140px;
+  height: 45px;
+  position: relative;
+  top:20px;
+  left: 270px;
+  background-color: var(--app-orange-text);
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  display: none;
+}
+
+/* ------------------------------- */
+/* Animations                      */
+/* ------------------------------- */
+
+.animation1 {
+  animation: animation1 5s ease-in-out infinite;
+}
+
+@keyframes animation1 {
+  0% {color: #00ffffaa;} 
+ 25% {color: #f80;} 
+ 50% {color: #ff0;} 
+ 75% {color: #00ffffaa;} /*Otra vez naranja*/
+100% {color: #f80;} /*Otra vez amarillo*/
+}
+
+
+.bounce {
+  animation: bounce 2.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 50%, 100% { translate: 0 0; }
+    25%, 75% { translate: 0 -15px; }
+}
+
+.glow {
+  animation: glow 3s ease-in-out infinite; 
+  color: #12f0f0f9;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px #2d9da9;
+  }
+  to {
+    text-shadow: 0 0 40px #34b3c1, 0 0 10px #4dbbc7;
+  }
+}
