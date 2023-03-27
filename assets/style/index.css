@@ -21,7 +21,7 @@ body {
   margin: 0;
 }
 
-img {
+img.gif {
   position: fixed;
   height: 120px;
   top: 50px;
@@ -45,12 +45,50 @@ img {
 }
 
 .title {
+  position: absolute;
+  left: 200px;
   font-size: 48;
   font-weight: 800;
   padding: 8px;
   border-radius: 4px;
   margin: 0 0 10px;
   color: var(--app-aqua-medium);
+}
+
+
+
+.results-container {
+  display: flex;
+  justify-content: space-between;
+  visibility: hidden;
+}
+
+.results-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-content: center;
+  place-items: center;
+  
+}
+
+img.icon {
+  height: 32px;
+  width: 32px;
+  border-top: 20px;
+}
+
+.time-box, .points-box {
+  font-size: 16px;
+  font-weight: 800;
+  padding: 10px;
+  color: var(--app-light-gray);
+}
+
+#time, #points {
+  font-size: 18px;
+  color: var(--app-aqua-medium);
+
 }
 
 p.instruction {
@@ -84,7 +122,7 @@ input[type=button] {
   color: var(--app-light-gray);
   letter-spacing: 1.3px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 25px;
   transition: all 0.25s ease-in-out;
 }
 
@@ -110,48 +148,15 @@ input[type=text] {
   transition: all 0.25s ease-in-out;
 }
 
-
-
-.time-box {
-  font-size: 16px;
-  font-weight: 800;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background-color: var(--app-aqua-medium);
-  height: 80px;
-  width: 100px;
-  padding: 10px;
-  border-radius: 50%;
-  color: var(--app-light-gray);
-  border-style: solid;
-  border-color: rgba(1, 141, 141, 0.667);
-}
-
-.points-box {
-  font-size: 16px;
-  font-weight: 800;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--app-aqua-medium);
-  height: 80px;
-  width: 100px;
-  padding: 10px;
-  border-radius: 50%;
-  color: var(--app-light-gray);
-  border-style: solid;
-  border-color: rgba(1, 141, 141, 0.667);
-}
-
-#time, #points {
-  font-size: 24px;
-
+input[type=text]::placeholder {
+  color: var(--app-orange-text);
+  font-weight: 400;
 }
 
 .message {
   margin-top: 20px;
   font-size: 16px;
+  visibility: hidden;
 }
 
 .end-game {
