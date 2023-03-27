@@ -53,7 +53,7 @@ ticTacSound.type = 'audio/mp3';
 //Setting variables
 let randomWord = "";
 let points = 0 ;
-let time = 99;
+let time = 10;
 
 // Setting array
 const words = [
@@ -159,11 +159,32 @@ startBtn.addEventListener('click', () => {
   startBtn.style.visibility = 'hidden';
   instruction.style.visibility = 'visible';
   const timeInterval = setInterval(updateTime, 1000);
+  restartBtn.style.visibility = 'visible';
+  message.style.visibility = 'visible';
 
   setTimeout(() => {
     setInterval();
   }, 99000);
-});
+
+  });
+  
+  playAgainBtn.addEventListener('click', () => {
+    let points = 0;
+    let time = 99;
+    timeLeft.innerHTML = `${time}s`;
+    totalPoints.innerHTML = `${points}`;
+    startBtn.style.visibility = 'visible';
+    instruction.style.visibility = 'hidden';
+    restartBtn.style.visibility = 'hidden';
+    randomWord = "";
+    word.innerHTML = randomWord;
+    message.style.visibility = 'hidden';
+    endGameBox.style.visibility = 'hidden';
+    console.log(time);
+    setTimeout(() => {
+      setInterval();
+    }, 99000);
+  })
 
 
 // Compare word input with random word
@@ -183,7 +204,4 @@ inputText.addEventListener('input', e => {
   e.target.value = '';
   updateTime();
 });
-
-
-
 
