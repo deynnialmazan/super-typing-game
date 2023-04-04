@@ -158,36 +158,31 @@ function endGame() {
     gameOverSound.pause();
   }, 30000);
 
-  saveScore(points);
-  showHighScores()
+  saveScore(points, finalPercentage);
+  //showHighScores()
   score = 0
 };
 
+function saveScore(points, finalPercentage) {
+  let finalScores = JSON.parse(localStorage.getItem('finalScores')) || [];
 
-function saveScore(score) {
-  let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-  highScores.push(points);
-  localStorage.setItem("highScores", JSON.stringify(highScores));
-};
-
-
-function showHighScores() {
-  let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
   let scoresList = document.querySelector('.score-list');
 
-  scoresList.innerHTML = "";
-  highScores.sort((a, b) => b - a);
+  const result = {
+    score: points,
+    perc: finalPercentage
+  };
 
-  highScores = highScores.slice(0, 9);
-  
-  for (let i = 0; i < highScores.length; i++) {
-    let li = document.createElement("li");
-    li.textContent = `#${i + 1}: ${highScores[i]} words`;
-    scoresList.appendChild(li);
-  }
-  
+  finalScores.push(result);
+  finalScores.sort((a, b) => b.score - a.score);
+  finalScores.splice(9);
+
+  localStorage.setItem('finalScores', JSON.stringify(finalScores))
+
+  scoresList.innerHTML = finalScores.map(result => {
+    return `<li>${result.score} Words  | ${result.perc}%</li>`
+  }).join('')
 };
-
 
 
 //Even listeners
