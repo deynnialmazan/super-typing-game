@@ -14,7 +14,7 @@ class Score {
   get date() { return this.#date; }
   get points() { return this.#points; }
   get percentage() { return this.#percentage; }
-}
+};
 
 const now = new Date();
 const today = now.toDateString().slice(4);
@@ -33,6 +33,8 @@ const pointsMessage = document.querySelector('.points-message');
 const instruction = document.querySelector('.instruction');
 const percentageMessage = document.querySelector('.percentage-message');
 const results = document.querySelector('.results-container');
+const startScreen = document.querySelector('.start-screen');
+const scoreboard = document.querySelector('.scoreboard');
 
 //Sounds
 //Background sound
@@ -56,6 +58,8 @@ let randomWord = "";
 let points = 0 ;
 let time = 12;
 
+
+
 // Setting array
 const words = [
   'dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
@@ -74,6 +78,7 @@ const words = [
   'science', 'mystery', 'famous', 'league', 'memory', 'leather', 
   'planet', 'software', 'update', 'yellow', 'keyboard', 'window'
 ];
+
 
 // Generate random word from 'words' array
 function getRandomWord() {
@@ -114,7 +119,7 @@ function updateTime() {
   } else if (time === 0) {
     endGame(); 
   //console.log(time);
-  }lastSound();
+  } lastSound();
 }
 
 //Tic-toc sound (last 5 seconds)
@@ -127,53 +132,86 @@ function lastSound() {
   }
 }
 
+
 // End game
 function endGame() {
   const finalPercentage = ((points/90) * 100).toFixed(0);
-
   // Create object with results using 'Score' class  
   const score = new Score (today, points, finalPercentage);
   
   //console.log(score);
-  
   pointsMessage.innerHTML =`${score.points}`
   percentageMessage.innerHTML =`${score.percentage}%`
-  endGameBox.style.display = 'flex';
+  endGameBox.style.display = 'grid';
+  startScreen.style.display = 'none';
   playAgainBtn.style.display = 'block';
   message.innerHTML= "";
+  scoreboard.style.display ='block';
 
   //Reproduce only game over sound 
   ticTacSound.pause();
   ticTacSound.currentTime = 0;
   ticTacSound.loop = false;
   gameOverSound.play();
+
+
   setTimeout(() => {
     gameOverSound.pause();
   }, 30000);
 
+  saveScore(points);
+  showHighScores()
+  score = 0
+
 };
+
+  
+window.addEventListener("load", (event) => {
+  showHighScores()
+});
+
+function saveScore(score) {
+  let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  highScores.push(points);
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+};
+
+
+function showHighScores() {
+
+  let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  let scoresList = document.querySelector('.score-list');
+
+  scoresList.innerHTML = "";
+  highScores.sort((a, b) => b - a);
+
+  highScores = highScores.slice(0, 9);
+  
+  for (let i = 0; i < highScores.length; i++) {
+    let li = document.createElement("li");
+    li.textContent = `#${i + 1}: ${highScores[i]} words`;
+    scoresList.appendChild(li);
+  }
+};
+
 
 
 //Even listeners
 startBtn.addEventListener('click', () => {
+  const timeInterval = setInterval(updateTime, 1000);
+  setTimeout(() => {
+    clearInterval(timeInterval);
+  }, 14000);
+  startBtn.style.visibility = 'hidden';
+  instruction.style.visibility = 'visible';
+  results.style.visibility = 'visible';
+  message.style.visibility = 'visible';
   inputText.disabled = false;
   inputText.focus()
   startSound.play();
   startSound.loop = true;
   displayRandomWord();
-  startBtn.style.visibility = 'hidden';
-  instruction.style.visibility = 'visible';
-  results.style.visibility = 'visible';
-  const timeInterval = setInterval(updateTime, 1000);
-  message.style.visibility = 'visible';
-
-  setTimeout(() => {
-    setInterval();
-  }, 99000);
-
-  playAgainBtn.addEventListener('click', () => {
-    clearInterval(timeInterval);
-  })
+  scoreboard.style.display='none';
 });
 
 
@@ -191,27 +229,34 @@ inputText.addEventListener('input', e => {
    message.innerHTML = 'You can...😟';
   return false;
   }
-  
   e.target.value = '';
-  updateTime();
 });
 
 
 playAgainBtn.addEventListener('click', () => {
-  endGameBox.style.display = 'none';
-  time = 99;
+  time = 12;
   points = 0;
+  const timeInterval = setInterval(updateTime, 1000);
+  setTimeout(() => {
+    clearInterval(timeInterval);
+  }, 14000);
+
+  endGameBox.style.display = 'none';
+  startScreen.style.display = 'block';
   totalPoints.innerHTML = `${points} points`;
   timeLeft.innerHTML = `${time}s`;
   randomWord = "";
   word.innerHTML = randomWord;
-  const timeInterval = setInterval(updateTime, 1000);
-  clearInterval(timeInterval);
-  startBtn.style.visibility = 'visible';
-  instruction.style.visibility = 'hidden';
-  message.style.visibility = 'hidden';
   inputText.value = "";
-  inputText.disabled = true;
+  inputText.disabled = false;
   inputText.focus()
-  results.style.visibility = 'hidden';
+  startSound.play();
+  startSound.loop = true;
+  displayRandomWord();
+  startBtn.style.visibility = 'hidden';
+  instruction.style.visibility = 'visible';
+  results.style.visibility = 'visible';
+  message.style.visibility = 'visible';
+  scoreboard.style.display = 'none';
+
 });

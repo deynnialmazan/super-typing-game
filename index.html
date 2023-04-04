@@ -15,48 +15,49 @@
     </head>
     <body>
         <main>
-            <img class="gif" src="./assets/image/busy2.gif">
-            <div class="container">
-                <h1 class="title animation1"> Super Typing Game </h2>
-                <div class="results-container">
-                    <div class="results-item">
-                        <img class="icon" src="./assets/image/alarm-clock-32.png">
-                        <p class="time-box"><span id="time">99s</span></p>
+                <div class="start-screen">
+                    <h1 class="title animation1"> Super Typing Game </h2>
+                    <p class="guide">Show off your typing skills. Let's go!</p>
+
+
+                    <input type="button" class="startBtn" value="Start">
+
+                    <div class="results-container">
+                        <div class="results-item">
+                            <img class="icon" src="./assets/image/alarm-clock-32.png">
+                            <p class="time-box"><span id="time">99s</span></p>
+                        </div>
+        
+                        <div class="results-item">
+                            <img class="icon" src="./assets/image/ok-32.png">
+                            <p class="points-box"><span id="points">0 points</span></p>
+                        </div>
                     </div>
 
-                    
-                    
-                    <div class="results-item">
-                        <img class="icon" src="./assets/image/ok-32.png">
-                        <p class="points-box"><span id="points">0 points</span></p>
+                    <div class="display-word">
+                        <p class="instruction">Type the word:</p>
+                        <h1 class="word"></h1>
                     </div>
-                </div>
-                
 
-                <p class="guide">Show off your typing skills... Let's go!</p>
+                    <input type="text" class="input-text" autocomplete="off" 
+                    placeholder="Press start and type here" disabled/>
 
-                <input type="button" class="startBtn" value="Start">
-
-                <div class="display-word">
-                    <p class="instruction">Type the word:</p>
-                    <h1 class="word"></h1>
+                    <h4 id="message"></h4>
                 </div>
 
-                <input type="text" class="input-text" autocomplete="off" 
-                placeholder="Press start and type here..." disabled/>
-
-                <h4 id="message"></h4>
-
-               
-                
                 <div id="end-game" class="end-game">
                     <h1 class="glow">Game over</h1>
-                    <p> Total points: </p> <p class="points-message"></p>
+                    <p> Points: </p> <p class="points-message"></p>
                     <p> You got: </p><p class="percentage-message"></p>
                     
                     <button class="play-again-btn">Try again</button>
                 </div>
-            </div>
+                <div class="scoreboard">
+                    <h4>High scores</h4>
+                    <ol class="score-list">
+                    </ol>
+                    <img src="./assets/image/deynni.png" alt="scores">
+                </div>
         </main>
     </body>
 </html>

@@ -17,49 +17,47 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  margin: 0;
 }
 
+/*
 img.gif {
-  position: fixed;
+  position: relative;
+  top: -10px;
+  left: 550px;
   height: 120px;
-  top: 50px;
-  right: 450px;
-}
+  
+}*/
 
 /* ------------------------------- */
 /* Main                            */
 /* ------------------------------- */
 
-.container {
+.start-screen {
   background-color: var(--app-medium-gray);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
   color: #fff;
-  position: relative;
   text-align: center;
-  width: 680px;
-  height: 450px;
+  width: 480px;
+  height: 480px;
+  display: block;
 }
 
 .title {
-  position: absolute;
   left: 200px;
-  font-size: 48;
+  font-size: 24px;
   font-weight: 800;
-  padding: 8px;
+  padding: 5px;
   border-radius: 4px;
-  margin: 0 0 10px;
+  margin: 0 0 5px;
   color: var(--app-aqua-medium);
 }
 
 
-
 .results-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   visibility: hidden;
 }
 
@@ -69,24 +67,25 @@ img.gif {
   justify-content: center;
   place-content: center;
   place-items: center;
+  margin-top: -10px;
   
 }
 
 img.icon {
-  height: 32px;
-  width: 32px;
-  border-top: 20px;
+  height: 28px;
+  width: 28px;
+  border-top: 10px;
 }
 
 .time-box, .points-box {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 800;
   padding: 10px;
   color: var(--app-light-gray);
 }
 
 #time, #points {
-  font-size: 18px;
+  font-size: 24px;
   color: var(--app-aqua-medium);
 
 }
@@ -94,7 +93,6 @@ img.icon {
 p.instruction {
   font-size: 18px;
   visibility: hidden;
-  
 }
 
 .display-word {
@@ -103,16 +101,16 @@ p.instruction {
 }
 
 h1.word {
-  font-size: 36px;
+  font-size: 42px;
   color: var(--app-orange-text)
 }
 
 .guide {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 input[type=button] {
-  width: 140px;
+  width: 120px;
   height: 45px;
   text-align: center;
   background-color: var(--app-orange-text);
@@ -122,7 +120,7 @@ input[type=button] {
   color: var(--app-light-gray);
   letter-spacing: 1.3px;
   cursor: pointer;
-  margin-top: 25px;
+  margin-top: 15px;
   transition: all 0.25s ease-in-out;
 }
 
@@ -146,6 +144,7 @@ input[type=text] {
   margin-bottom: 10px;
   border: 2px solid var(--app-orange-text);
   transition: all 0.25s ease-in-out;
+  text-align: center;
 }
 
 input[type=text]::placeholder {
@@ -154,41 +153,36 @@ input[type=text]::placeholder {
 }
 
 .message {
-  margin-top: 20px;
   font-size: 16px;
+  margin-top: 10px;
   visibility: hidden;
 }
 
 .end-game {
-  font-size: 30px;
-  background-color: inherit;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
   display: none;
-  padding-top: 70px;
+  place-items: center;
+  place-content: center;
+  background-color: var(--app-medium-gray);
   border-radius: 15px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  width: 480px;
+  height: 480px;
+  font-size: 24px;
+  text-align: center;
+  margin: auto;
   color: var(--app-light-gray); 
 }
 
 .points-message, .percentage-message {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--app-orange-text);
+  padding-top: 15px;
 }
 
 .play-again-btn {
-  place-content: center;
   width: 140px;
   height: 45px;
-  position: relative;
-  top:20px;
-  left: 270px;
   background-color: var(--app-orange-text);
   border-radius: 30px;
   font-size: 18px;
@@ -197,9 +191,55 @@ input[type=text]::placeholder {
   letter-spacing: 0.4px;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
-  display: none;
+  margin-top: 15px;
+  display: block;
 }
 
+
+.scoreboard {
+  padding-top: 1px;
+  position: absolute;
+  margin: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 300px;
+  background-color:rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  vertical-align: top;
+  color: var(--app-light-gray);
+  padding: 50px 20px; 
+  
+}
+
+.scoreboard h4 {
+  padding-top: 20px;
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+ol {
+  text-align: left;
+  list-style: none;
+}
+
+li {
+  margin-left: 35px;
+  display: grid;
+  padding-left: 30px;
+  padding-top: 5px;
+  text-align: left;
+  font-size: 20px;
+  color: var(--app-light-gray);
+}
+
+
+.scoreboard img {
+  margin-top: 200px;
+  margin-left: 75px;
+  border-radius: 50%;
+}
 
 /* ------------------------------- */
 /* Animations                      */
@@ -212,6 +252,8 @@ input[type=text]::placeholder {
 .glow {
   animation: glow 3s ease-in-out infinite; 
   color: #12f0f0f9;
+  font-size: 50px;
+  
 }
 
 .bounce {
