@@ -236,7 +236,8 @@ li {
 
 
 .scoreboard img {
-  margin-top: 200px;
+  position: absolute;
+  bottom: 40px;
   margin-left: 75px;
   border-radius: 50%;
 }

@@ -18,7 +18,6 @@ class Score {
 
 const now = new Date();
 const today = now.toDateString().slice(4);
-//console.log(today);
 
 
 const startBtn = document.querySelector('.startBtn');
@@ -162,13 +161,12 @@ function endGame() {
   saveScore(points);
   showHighScores()
   score = 0
-
 };
 
-  
 window.addEventListener("load", (event) => {
-  showHighScores()
+    showHighScores()
 });
+
 
 function saveScore(score) {
   let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
@@ -178,7 +176,6 @@ function saveScore(score) {
 
 
 function showHighScores() {
-
   let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
   let scoresList = document.querySelector('.score-list');
 
@@ -192,6 +189,7 @@ function showHighScores() {
     li.textContent = `#${i + 1}: ${highScores[i]} words`;
     scoresList.appendChild(li);
   }
+  
 };
 
 
@@ -258,5 +256,4 @@ playAgainBtn.addEventListener('click', () => {
   results.style.visibility = 'visible';
   message.style.visibility = 'visible';
   scoreboard.style.display = 'none';
-
 });
