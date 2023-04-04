@@ -195,6 +195,21 @@ input[type=text]::placeholder {
   display: block;
 }
 
+.show-scoreboard {
+  color: var(--app-dark-bg);
+  font-weight: 600;
+  font-size: 14px;
+  text-align: right;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+
+.show-scoreboard:hover {
+  text-decoration: underline ;
+}
 
 .scoreboard {
   padding-top: 1px;
@@ -209,7 +224,7 @@ input[type=text]::placeholder {
   vertical-align: top;
   color: var(--app-light-gray);
   padding: 50px 20px; 
-  
+  display: none;
 }
 
 .scoreboard h4 {

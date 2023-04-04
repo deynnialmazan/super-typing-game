@@ -34,6 +34,7 @@ const percentageMessage = document.querySelector('.percentage-message');
 const results = document.querySelector('.results-container');
 const startScreen = document.querySelector('.start-screen');
 const scoreboard = document.querySelector('.scoreboard');
+const showScoreboard = document.querySelector('.show-scoreboard');
 
 //Sounds
 //Background sound
@@ -163,10 +164,6 @@ function endGame() {
   score = 0
 };
 
-window.addEventListener("load", (event) => {
-    showHighScores()
-});
-
 
 function saveScore(score) {
   let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
@@ -256,4 +253,17 @@ playAgainBtn.addEventListener('click', () => {
   results.style.visibility = 'visible';
   message.style.visibility = 'visible';
   scoreboard.style.display = 'none';
+});
+
+
+let statusBox= 'hide';
+
+showScoreboard.addEventListener('click', () => {
+    if (statusBox === 'hide') {
+    scoreboard.style.display = 'block';
+    statusBox = 'show';
+   } else if (statusBox === 'show') {
+    scoreboard.style.display = 'none';
+    statusBox = 'hide';
+   }
 });
