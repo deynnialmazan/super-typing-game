@@ -254,16 +254,3 @@ playAgainBtn.addEventListener('click', () => {
   message.style.visibility = 'visible';
   scoreboard.style.display = 'none';
 });
-
-
-let statusBox= 'hide';
-
-showScoreboard.addEventListener('click', () => {
-    if (statusBox === 'hide') {
-    scoreboard.style.display = 'block';
-    statusBox = 'show';
-   } else if (statusBox === 'show') {
-    scoreboard.style.display = 'none';
-    statusBox = 'hide';
-   }
-});
