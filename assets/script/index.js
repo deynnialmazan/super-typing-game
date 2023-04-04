@@ -34,7 +34,6 @@ const percentageMessage = document.querySelector('.percentage-message');
 const results = document.querySelector('.results-container');
 const startScreen = document.querySelector('.start-screen');
 const scoreboard = document.querySelector('.scoreboard');
-const showScoreboard = document.querySelector('.show-scoreboard');
 
 //Sounds
 //Background sound

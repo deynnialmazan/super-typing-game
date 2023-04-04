@@ -148,8 +148,8 @@ input[type=text] {
 }
 
 input[type=text]::placeholder {
-  color: var(--app-orange-text);
-  font-weight: 400;
+  color: var(--app-medium-gray);
+  font-weight: 600;
 }
 
 .message {
